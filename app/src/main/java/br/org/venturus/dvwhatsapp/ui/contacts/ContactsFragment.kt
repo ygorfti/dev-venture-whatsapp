@@ -51,8 +51,7 @@ class ContactsFragment : Fragment() {
     }
 
     private fun onContactSelected(contact: Contact) {
-        val email = UserRepository.myEmail()
-        ChatRepository.getChatWith(email) { chatId, e ->
+        ChatRepository.getChatWith(contact.email) { chatId, e ->
             if (e != null) {
                 Toast.makeText(context, e, Toast.LENGTH_LONG).show()
             } else {

@@ -38,7 +38,7 @@ object ChatRepository {
     }
 
     private fun createChatId(email1: String, email2: String): String {
-        return if (email1 > email2) "$email1-$email2" else "$email2-$email1"
+        return if (email1.compareTo(email2) > 0) "$email1-$email2" else "$email2-$email1"
     }
 
     fun getChatWith(contactEmail: String, onComplete: (chatId: String, e: String?) -> Unit) {
@@ -47,11 +47,7 @@ object ChatRepository {
             .document(chat)
             .get()
             .addOnSuccessListener {
-                if (it.exists()) {
-                    onComplete(it.id, null)
-                } else {
-
-                }
+                onComplete(it.id, null)
             }
             .addOnFailureListener {
                 onComplete("", it.localizedMessage)
