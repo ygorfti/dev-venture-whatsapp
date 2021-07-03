@@ -10,6 +10,7 @@ import com.google.firebase.ktx.Firebase
 object UserRepository {
     private const val TAG: String = "UserRepository"
     private const val USERS: String = "users"
+    private const val CONTACTS: String = "contacts"
     private val db by lazy {Firebase.firestore}
 
     fun myEmail(): String {
@@ -39,8 +40,17 @@ object UserRepository {
             }
     }
 
-    fun addUserToMyContacts(user: User){
-
+    fun addUserToMyContacts(user: User, onComplete: (error: String?) -> Unit){
+        db.collection(USERS).document(myEmail()).collection(CONTACTS).document().set(
+            hashMapOf(
+                "name" to user.name,
+                "email" to user.email
+            )
+        ).addOnSuccessListener {
+            onComplete(null)
+        }.addOnFailureListener {
+            onComplete(it.localizedMessage)
+        }
     }
 
     fun getMyContacts(onComplete: (ArrayList<Contact>) -> Unit) {

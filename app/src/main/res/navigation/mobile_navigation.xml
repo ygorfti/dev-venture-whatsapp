@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_chats">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="br.org.venturus.dvwhatsapp.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:id="@+id/nav_chats"
+        android:name="br.org.venturus.dvwhatsapp.ui.chats.ChatsFragment"
+        android:label="@string/menu_chats"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_contacts"
         android:name="br.org.venturus.dvwhatsapp.ui.contacts.ContactsFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_contacts"
         tools:layout="@layout/fragment_contacts" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="br.org.venturus.dvwhatsapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:name="br.org.venturus.dvwhatsapp.ui.status.SlideshowFragment"
+        android:label="@string/menu_status"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>

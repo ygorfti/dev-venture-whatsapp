@@ -1,4 +1,4 @@
-package br.org.venturus.dvwhatsapp.ui.slideshow
+package br.org.venturus.dvwhatsapp.ui.status
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -10,11 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import br.org.venturus.dvwhatsapp.ChatActivity
+import br.org.venturus.dvwhatsapp.ui.messages.MessagesActivity
 import br.org.venturus.dvwhatsapp.databinding.FragmentContactsBinding
 import br.org.venturus.dvwhatsapp.model.Contact
 import br.org.venturus.dvwhatsapp.repository.ChatRepository
-import br.org.venturus.dvwhatsapp.repository.UserRepository
 
 class ContactsFragment : Fragment() {
 
@@ -61,7 +60,7 @@ class ContactsFragment : Fragment() {
     }
 
     private fun goToChat(chatId: String) {
-        val intent: Intent = Intent(context, ChatActivity::class.java)
+        val intent: Intent = Intent(context, MessagesActivity::class.java)
         intent.putExtra(
             "chatId",
             chatId

@@ -1,4 +1,4 @@
-package br.org.venturus.dvwhatsapp
+package br.org.venturus.dvwhatsapp.ui.messages
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,9 +8,9 @@ import br.org.venturus.dvwhatsapp.repository.ChatRepository
 import br.org.venturus.dvwhatsapp.repository.UserRepository
 import java.util.*
 
-class ChatActivity : AppCompatActivity() {
+class MessagesActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityChatBinding
+    private lateinit var binding: ActivityChatBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,13 +24,12 @@ class ChatActivity : AppCompatActivity() {
         }
 
         val me = UserRepository.myEmail()
-        val messages = binding.messages
+        val messageList = binding.messageList
+        val adapter = MessagesAdapter(me)
+        messageList.adapter = adapter
 
         ChatRepository.getMessages(chatId){
-            messages.text.clear()
-            for(msg in it){
-                messages.text.append("${msg.message}\n")
-            }
+            adapter.messages = it
         }
 
         binding.btnSend.setOnClickListener{
