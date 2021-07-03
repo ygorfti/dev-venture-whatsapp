@@ -1,0 +1,2 @@
+rootProject.name = "DV Whatsapp"
+include ':app'
